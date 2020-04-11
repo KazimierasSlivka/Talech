@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Product from '../product/Product';
 
 
-function Products()
-{
-    return(
+function Products() {
+    return (
         <>
             <h1>Products list</h1>
+            <Link to="/products/create">
+                <button>Create new item</button>
+            </Link>
             <table>
                 <colgroup>
                     <col className="name-collumn" />
@@ -34,15 +37,15 @@ function Products()
                 <tbody>
                     {JSON.parse(localStorage.getItem('Products List')).map((product, index) => (
                         <Product
-                            key = {product.id}
-                            name = {product.name}
-                            ean = {product.ean}
-                            type = {product.type}
-                            weight = {product.weight}
-                            color = {product.color}
-                            active = {product.active}
-                            quantity = {product.quantity}
-                            price = {product.price}
+                            key={product.id}
+                            name={product.name}
+                            ean={product.ean}
+                            type={product.type}
+                            weight={product.weight}
+                            color={product.color}
+                            active={product.active}
+                            quantity={product.quantity}
+                            price={product.price}
                         />
                     ))}
                 </tbody>

@@ -9,9 +9,19 @@ function Product(props) {
                 <td>{props.type}</td>
                 <td>{props.weight}</td>
                 <td>{props.color}</td>
-                <td>{props.active}</td>
+                <td>
+                    <input 
+                        type="checkbox"
+                        checked={props.active}
+                    />                    
+                </td>
                 <td>{props.quantity}</td>
                 <td>{props.price}</td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
             </tr>
         </>
     );
