@@ -9,7 +9,7 @@ function Products() {
         <>
             <h1>Products list</h1>
             <Link to="/products/create">
-                <button>Create new item</button>
+                <button>Create new product</button>
             </Link>
             <table>
                 <colgroup>
@@ -35,9 +35,10 @@ function Products() {
                     </tr>
                 </thead>
                 <tbody>
-                    {JSON.parse(localStorage.getItem('Products List')).map((product, index) => (
+                    {JSON.parse(localStorage.getItem('Products List')).map((product) => (
                         <Product
                             key={product.id}
+                            id={product.id}
                             name={product.name}
                             ean={product.ean}
                             type={product.type}
