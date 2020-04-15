@@ -9,18 +9,19 @@ function Preview() {
     const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(true);
     const [isPriceHistoryOpen, setIsPriceHistoryOpen] = useState(false);
     const [isQuantityHistoryOpen, setIsQuantityHistoryOpen] = useState(false);
+    const [product, setProduct] = useState(JSON.parse(localStorage.getItem('Products List')));
 
-    function ShowProductDetails(){
+    function ShowProductDetails() {
         setIsProductDetailsOpen(true);
         setIsPriceHistoryOpen(false);
         setIsQuantityHistoryOpen(false);
     }
-    function ShowPriceHistory(){
+    function ShowPriceHistory() {
         setIsProductDetailsOpen(false);
         setIsPriceHistoryOpen(true);
         setIsQuantityHistoryOpen(false);
     }
-    function ShowQuantityHistory(){
+    function ShowQuantityHistory() {
         setIsProductDetailsOpen(false);
         setIsPriceHistoryOpen(false);
         setIsQuantityHistoryOpen(true);
@@ -28,7 +29,7 @@ function Preview() {
 
     return (
         <>
-            <h3>Preview</h3>
+            <h1>Preview</h1>
             <Link to="/products">
                 <button>
                     Back to products list
@@ -39,7 +40,12 @@ function Preview() {
                 <button onClick={ShowPriceHistory}>Price history</button>
                 <button onClick={ShowQuantityHistory}>Quantity history</button>
             </div>
-            {isProductDetailsOpen && <ProductDetails />}
+            {isProductDetailsOpen &&
+                <ProductDetails
+                    price= {product.price}
+                    quantity={product.quantity} 
+                />
+            }
             {isPriceHistoryOpen && <PriceHistory />}
             {isQuantityHistoryOpen && <QuantityHistory />}
         </>

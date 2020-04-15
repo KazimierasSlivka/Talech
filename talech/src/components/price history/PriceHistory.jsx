@@ -2,7 +2,7 @@ import React from 'react'
 
 function PriceHistory(){
     return(
-        <h3>Price history</h3>
+        <h2>Price history</h2>
     );
 }
 

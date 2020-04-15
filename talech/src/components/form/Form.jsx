@@ -28,7 +28,6 @@ function Form(props) {
         productsList[i].type = inputFieldsValues.type;
         productsList[i].weight = inputFieldsValues.weight;
         productsList[i].color = inputFieldsValues.color;
-        productsList[i].active = inputFieldsValues.active;
         localStorage.setItem('Products List', JSON.stringify(productsList));
     }
 
@@ -74,12 +73,6 @@ function Form(props) {
                     placeholder="Item color"
                     ref={register}
                     type="text"
-                />
-                <input
-                    defaultChecked={props.formAction === "edit" ? props.product.active : null}
-                    name="active"
-                    ref={register}
-                    type="checkbox"
                 />
                 <div>
                     <Link to="/products">
