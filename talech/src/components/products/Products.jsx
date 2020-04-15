@@ -44,7 +44,7 @@ function Products() {
                     </colgroup>
                     <thead>
                         <tr>
-                            <th className="text-center">Name</th>
+                            <th className="text-left">Name</th>
                             <th className="text-center">EAN</th>
                             <th className="text-center">Type</th>
                             <th className="text-center">Weight</th>
