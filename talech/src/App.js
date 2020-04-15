@@ -172,6 +172,61 @@ function App() {
               "price": .99
             }
           ]
+      },
+      {
+        "id": GenerateUniqueId(),
+        "name": "Carrots (Hard coded)",
+        "ean": "1234567890",
+        "type": "Vegetable",
+        "weight": "0.07",
+        "color": "Orange",
+        "active": true,
+        "quantityData":
+          [
+            {
+              "time": 1586947746810,
+              "amount": 0
+            },
+            {
+              "time": 1586944346810,
+              "amount": 6
+            },
+            {
+              "time": 1586924346810,
+              "amount": 23
+            },
+            {
+              "time": 1585924346810,
+              "amount": 45
+            },
+            {
+              "time": 1584924346810,
+              "amount": 98
+            }
+          ],
+        "priceData":
+          [
+            {
+              "time": 1586950000000,
+              "price": .30
+            },
+            {
+              "time": 1586918079000,
+              "price": .29
+            },
+            {
+              "time": 1586818079000,
+              "price": .5
+            },
+            {
+              "time": 1586518079000,
+              "price": .6
+            },
+            {
+              "time": 1586118079000,
+              "price": .7
+            }
+          ]
       }
     ]
 

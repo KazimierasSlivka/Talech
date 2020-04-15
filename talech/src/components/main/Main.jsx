@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import NotFound from '../not found/NotFound';
@@ -6,6 +6,8 @@ import Products from '../products/Products';
 import Create from '../create/Create';
 import Edit from '../edit/Edit';
 import Preview from '../preview/Preview';
+
+import './Main.scss'
 
 function Main() {
     return (

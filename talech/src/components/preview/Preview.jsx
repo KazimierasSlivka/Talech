@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import ProductDetails from '../product details/ProductDetails';
@@ -9,11 +9,7 @@ function Preview() {
     const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(true);
     const [isPriceHistoryOpen, setIsPriceHistoryOpen] = useState(false);
     const [isQuantityHistoryOpen, setIsQuantityHistoryOpen] = useState(false);
-    const [product, setProduct] = useState(FindItemById());
-
-    useEffect(() => {
-        console.log('preview', FindItemById());
-    }, [])
+    const product = FindItemById();
 
     function GetIdByUrl() {
         let urlParameters = window.location.pathname.split("/");
@@ -53,7 +49,7 @@ function Preview() {
 
     function RewriteQuantities(oldQuantitiesList, newQuantity) {
         let newQuantitiesList = [];
-        if (newQuantity != oldQuantitiesList[0].amount) {
+        if (newQuantity !== oldQuantitiesList[0].amount) {
             newQuantitiesList[0] = {
                 "time": Date.now(),
                 "amount": newQuantity

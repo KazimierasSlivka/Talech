@@ -1,0 +1,41 @@
+$color-view: #e0e0e0;
+$color-view-hover: #d2d2d2;
+$color-edit: #3f51b5;
+$color-edit-hover: #1e3094;
+$color-delete: #f50057;
+$color-delete-hover: #dc0042;
+
+.talech-button {
+    border-radius: 5px;
+    border: 0;
+    margin: 2px 0;
+    padding: 7px 15px;
+    text-transform: uppercase;
+}
+h1 {
+    text-transform: uppercase;
+}
+.maintenance-view {
+    background-color: $color-view;
+    color: black;
+}
+.maintenance-view:hover {
+    background-color: $color-view-hover;
+    color: black;
+}
+.maintenance-edit {
+    background-color: $color-edit;
+    color: white;
+}
+.maintenance-edit:hover {
+    background-color: $color-edit-hover;
+    color: white;
+}
+.maintenance-delete {
+    background-color: $color-delete;
+    color: white;
+}
+.maintenance-delete:hover {
+    background-color: $color-delete-hover;
+    color: white;
+}

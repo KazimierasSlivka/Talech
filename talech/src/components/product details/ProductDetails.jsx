@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form';
 
 function ProductDetails(props) {
     const { handleSubmit, register } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
-
-    useEffect(() => {
-        console.log(props);
-    }, [])
 
     function OnSave(inputFieldsValues) {
         props.SaveById(inputFieldsValues);

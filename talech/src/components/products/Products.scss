@@ -1,0 +1,20 @@
+table {
+    margin-top: 40px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-left: 0;
+    width: 100%;
+    thead {
+        th {
+            font-size: 1.1rem;
+        }
+    }
+    tbody {
+        tr:hover {
+            background-color: yellowgreen;
+        }
+        button {
+            cursor: pointer;
+        }
+    }
+}

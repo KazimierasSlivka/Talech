@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Product from '../product/Product';
 
+import './Products.scss';
+
 function Products() {
     const [productsList, setProductsList] = useState(JSON.parse(localStorage.getItem('Products List')));
     const [updateNow, setUpdateNow] = useState(false);
@@ -15,14 +17,20 @@ function Products() {
         setUpdateNow(!updateNow);
     }
 
-    if (productsList.length != 0)
+    if (productsList.length !== 0)
         return (
             <>
                 <h1>Products list</h1>
                 <Link to="/products/create">
-                    <button>Create new product</button>
+                    <button
+                        className="talech-button maintenance-edit"    
+                    >
+                        Create new product
+                    </button>
                 </Link>
-                <table>
+                <table 
+                    cellspacing="0"
+                >
                     <colgroup>
                         <col className="name-collumn" />
                         <col className="ean-collumn" />
@@ -32,6 +40,7 @@ function Products() {
                         <col className="active-collumn" />
                         <col className="quantity-collumn" />
                         <col className="price-collumn" />
+                        <col className="maintenance-collumn" />
                     </colgroup>
                     <thead>
                         <tr>
@@ -43,6 +52,7 @@ function Products() {
                             <th className="text-center">Active</th>
                             <th className="text-center">Quantity</th>
                             <th className="text-center">Price</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,7 +81,11 @@ function Products() {
                 <h1>Products list</h1>
                 <h3>Products list is empty</h3>
                 <Link to="/products/create">
-                    <button>Create new product</button>
+                    <button
+                        className="talech-button maintenance-edit"
+                    >
+                        Create new product
+                    </button>
                 </Link>
             </>
         );
