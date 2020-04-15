@@ -1,16 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 
 function ProductDetails(props) {
     const { handleSubmit, register } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
+    useEffect(()=>{
+        console.log(props);
+    },[])
+
     function OnSave(inputFieldsValues) {
-        // if (props.formAction === "create")
-        //     SaveOnCreate(inputFieldsValues);
-        // else 
-        //     SaveOnEdit(inputFieldsValues);
-        // history.push('/products');
-        return null;
+        props.SaveById(inputFieldsValues);
     }
 
     return (

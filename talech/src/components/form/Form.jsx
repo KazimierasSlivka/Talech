@@ -22,17 +22,13 @@ function Form(props) {
     }
 
     function SaveOnEdit(inputFieldsValues) {
-        let i = FindItemIndexById()
+        let i = productsList.findIndex(item => item.id === props.product.id);
         productsList[i].name = inputFieldsValues.name;
         productsList[i].ean = inputFieldsValues.ean;
         productsList[i].type = inputFieldsValues.type;
         productsList[i].weight = inputFieldsValues.weight;
         productsList[i].color = inputFieldsValues.color;
         localStorage.setItem('Products List', JSON.stringify(productsList));
-    }
-
-    function FindItemIndexById() {
-        return productsList.findIndex(item => item.id === props.product.id);
     }
 
     return (

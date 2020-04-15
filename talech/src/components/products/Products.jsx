@@ -56,8 +56,8 @@ function Products() {
                             weight={product.weight}
                             color={product.color}
                             active={product.active}
-                            quantity={product.quantity}
-                            price={product.price}
+                            quantity={product.quantityData[0].amount}
+                            price={product.priceData[0].price}
                             UpdateNow={UpdateNow}
                         />
                     ))}

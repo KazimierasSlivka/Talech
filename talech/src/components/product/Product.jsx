@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 function Product(props) {
-    const [isProductDisabled, setIsproductDisabled] = useState(props.active);
+    const [isProductDisabled, setIsProductDisabled] = useState(props.active);
 
     function DeleteProductByIdFromList() {
         let productsList = JSON.parse(localStorage.getItem('Products List'));
@@ -11,10 +11,6 @@ function Product(props) {
         productsList.splice(removeIndex, 1);
         localStorage.setItem('Products List', JSON.stringify(productsList));
         props.UpdateNow();
-    }
-
-    function ChangeProductActiveStatus(){
-
     }
 
     return (
@@ -29,7 +25,7 @@ function Product(props) {
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
-                        onChange={()=>{setIsproductDisabled(!isProductDisabled)}}
+                        onChange={()=>{setIsProductDisabled(!isProductDisabled)}}
                     />
                 </td>
                 <td>{props.quantity}</td>

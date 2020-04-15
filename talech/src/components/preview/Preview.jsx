@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import ProductDetails from '../product details/ProductDetails';
@@ -9,7 +9,30 @@ function Preview() {
     const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(true);
     const [isPriceHistoryOpen, setIsPriceHistoryOpen] = useState(false);
     const [isQuantityHistoryOpen, setIsQuantityHistoryOpen] = useState(false);
-    const [product, setProduct] = useState(JSON.parse(localStorage.getItem('Products List')));
+    const [product, setProduct] = useState(FindItemById());
+
+    useEffect(() => {
+        console.log(FindItemById());
+    }, [])
+
+    function GetIdByUrl() {
+        let urlParameters = window.location.pathname.split("/");
+        return urlParameters[2];
+    }
+
+    function FindItemById() {
+        let productsList = JSON.parse(localStorage.getItem('Products List'));
+        let product = productsList.find(item => item.id === GetIdByUrl());
+        return product;
+    }
+
+    function SaveById(inputFieldsValues) {
+        let productsList = JSON.parse(localStorage.getItem('Products List'));
+        let i = productsList.findIndex(item => item.id === product.id);
+        productsList[i].price = inputFieldsValues.price;
+        productsList[i].quantity = inputFieldsValues.quantity;
+        localStorage.setItem('Products List', JSON.stringify(productsList));
+    }
 
     function ShowProductDetails() {
         setIsProductDetailsOpen(true);
@@ -42,11 +65,15 @@ function Preview() {
             </div>
             {isProductDetailsOpen &&
                 <ProductDetails
-                    price= {product.price}
-                    quantity={product.quantity} 
+                    price={product.priceData[0].price}
+                    quantity={product.quantityData[0].amount}
+                    SaveById={SaveById}
                 />
             }
-            {isPriceHistoryOpen && <PriceHistory />}
+            {isPriceHistoryOpen && 
+            <PriceHistory 
+                priceHistoryData={product.PriceData}
+            />}
             {isQuantityHistoryOpen && <QuantityHistory />}
         </>
     );

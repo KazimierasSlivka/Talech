@@ -1,8 +1,32 @@
 import React from 'react'
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-function PriceHistory(){
+function PriceHistory(props){
+
+    const options = {
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Price history'
+        },
+        series: [
+          {
+            data: 
+            [
+                //[props.priceHistoryData[0].time, props.priceHistoryData[0].price],
+                //[props.priceHistoryData[1].time,props.priceHistoryData[1].price],
+                [2,5], 
+            ]
+          }
+        ]
+      };
+
     return(
-        <h2>Price history</h2>
+        <>
+            <HighchartsReact highcharts={Highcharts} options={options} />
+        </>
     );
 }
 
