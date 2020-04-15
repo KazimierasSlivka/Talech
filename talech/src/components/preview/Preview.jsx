@@ -12,7 +12,7 @@ function Preview() {
     const [product, setProduct] = useState(FindItemById());
 
     useEffect(() => {
-        console.log('preview',FindItemById());
+        console.log('preview', FindItemById());
     }, [])
 
     function GetIdByUrl() {
@@ -29,9 +29,41 @@ function Preview() {
     function SaveById(inputFieldsValues) {
         let productsList = JSON.parse(localStorage.getItem('Products List'));
         let i = productsList.findIndex(item => item.id === product.id);
-        productsList[i].price = inputFieldsValues.price;
-        productsList[i].quantity = inputFieldsValues.quantity;
+        let oldPricesList = product.priceData;
+        let oldQuantitiesList = product.quantityData;
+        productsList[i].priceData = RewritePrices(oldPricesList, parseFloat(inputFieldsValues.price));
+        productsList[i].quantityData = RewriteQuantities(oldQuantitiesList, parseFloat(inputFieldsValues.quantity));
         localStorage.setItem('Products List', JSON.stringify(productsList));
+    }
+
+    function RewritePrices(oldPricesList, newPrice) {
+        let newPricesList = []
+        if (newPrice !== oldPricesList[0].price) {
+            newPricesList[0] = {
+                "time": Date.now(),
+                "price": newPrice
+            }
+            for (let i = 1; i < 5; i++)
+                newPricesList[i] = oldPricesList[i - 1]
+        }
+        else
+            newPricesList = oldPricesList;
+        return newPricesList;
+    }
+
+    function RewriteQuantities(oldQuantitiesList, newQuantity) {
+        let newQuantitiesList = [];
+        if (newQuantity != oldQuantitiesList[0].amount) {
+            newQuantitiesList[0] = {
+                "time": Date.now(),
+                "amount": newQuantity
+            }            
+            for (let i = 1; i < 5; i++)
+                newQuantitiesList[i] = oldQuantitiesList[i - 1]
+        }
+        else
+            newQuantitiesList = oldQuantitiesList;
+        return newQuantitiesList;
     }
 
     function ShowProductDetails() {
@@ -72,13 +104,13 @@ function Preview() {
                     SaveById={SaveById}
                 />
             }
-            {isPriceHistoryOpen && 
-                <PriceHistory 
+            {isPriceHistoryOpen &&
+                <PriceHistory
                     priceHistoryData={product.priceData}
                 />
             }
-            {isQuantityHistoryOpen && 
-                <QuantityHistory 
+            {isQuantityHistoryOpen &&
+                <QuantityHistory
                     quantityHistoryData={product.quantityData}
                 />
             }

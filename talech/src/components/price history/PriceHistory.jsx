@@ -13,7 +13,6 @@ function PriceHistory(props) {
         },
         series: [
             {
-                //data: MakeChartPoints()
                 data: MakeChartPoints(props.priceHistoryData)
             }
         ]

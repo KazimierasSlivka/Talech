@@ -25,7 +25,7 @@ function Product(props) {
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
-                        onChange={()=>{setIsProductDisabled(!isProductDisabled)}}
+                        onChange={() => { setIsProductDisabled(!isProductDisabled) }}
                     />
                 </td>
                 <td>{props.quantity}</td>
