@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function Product(props) {
-    const [isProductDiabled, setIsproductDisabled] = useState();
-
-    function DisableProduct(){
-        
+    const [isProductDisabled, setIsproductDisabled] = useState();
+    function DeleteProductByIdFromList() {
+        let productsList = JSON.parse(localStorage.getItem('Products List'));
+        let removeIndex = productsList.findIndex(item => item.id === props.id);
+        productsList.splice(removeIndex, 1);
+        localStorage.setItem('Products List', JSON.stringify(productsList));
+        props.UpdateNow();
     }
 
     return (
@@ -21,15 +26,26 @@ function Product(props) {
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
-                        onChange
                     />
                 </td>
                 <td>{props.quantity}</td>
                 <td>{props.price}</td>
                 <td>
-                    <button>View</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <Link to={"/products/" + props.id}>
+                        <button>
+                            View
+                        </button>
+                    </Link>
+                    <Link to={"/products/" + props.id + "/edit"}>
+                        <button>
+                            Edit
+                        </button>
+                    </Link>
+                    <button
+                        onClick={DeleteProductByIdFromList}
+                    >
+                        Delete
+                    </button>
                 </td>
             </tr>
         </>
