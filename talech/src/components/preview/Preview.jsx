@@ -12,7 +12,7 @@ function Preview() {
     const [product, setProduct] = useState(FindItemById());
 
     useEffect(() => {
-        console.log(FindItemById());
+        console.log('preview',FindItemById());
     }, [])
 
     function GetIdByUrl() {
@@ -39,11 +39,13 @@ function Preview() {
         setIsPriceHistoryOpen(false);
         setIsQuantityHistoryOpen(false);
     }
+
     function ShowPriceHistory() {
         setIsProductDetailsOpen(false);
         setIsPriceHistoryOpen(true);
         setIsQuantityHistoryOpen(false);
     }
+
     function ShowQuantityHistory() {
         setIsProductDetailsOpen(false);
         setIsPriceHistoryOpen(false);
@@ -71,10 +73,15 @@ function Preview() {
                 />
             }
             {isPriceHistoryOpen && 
-            <PriceHistory 
-                priceHistoryData={product.PriceData}
-            />}
-            {isQuantityHistoryOpen && <QuantityHistory />}
+                <PriceHistory 
+                    priceHistoryData={product.priceData}
+                />
+            }
+            {isQuantityHistoryOpen && 
+                <QuantityHistory 
+                    quantityHistoryData={product.quantityData}
+                />
+            }
         </>
     );
 }

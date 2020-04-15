@@ -2,30 +2,36 @@ import React from 'react'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-function PriceHistory(props){
+function PriceHistory(props) {
 
     const options = {
         chart: {
-          type: 'spline'
+            type: 'spline'
         },
         title: {
-          text: 'Price history'
+            text: 'Price history'
         },
         series: [
-          {
-            data: 
-            [
-                //[props.priceHistoryData[0].time, props.priceHistoryData[0].price],
-                //[props.priceHistoryData[1].time,props.priceHistoryData[1].price],
-                [2,5], 
-            ]
-          }
+            {
+                //data: MakeChartPoints()
+                data: MakeChartPoints(props.priceHistoryData)
+            }
         ]
-      };
+    };
 
-    return(
+    function MakeChartPoints() {
+        let chartPoints = [];
+        for (let i = 0; i < props.priceHistoryData.length; i++)
+            chartPoints[i] = [props.priceHistoryData[i].time, props.priceHistoryData[i].price]
+        return chartPoints;
+    }
+
+    return (
         <>
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+            />
         </>
     );
 }
