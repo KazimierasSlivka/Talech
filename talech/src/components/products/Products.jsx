@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Product from '../product/Product';
 
-
 function Products() {
+    const [productsList, setProductsList] = useState(JSON.parse(localStorage.getItem('Products List')));
+    const [updateNow, setUpdateNow] = useState(false);
+
+    useEffect(() => {
+        setProductsList(JSON.parse(localStorage.getItem('Products List')));
+    },[updateNow])
+
+    function UpdateNow(){
+        setUpdateNow(!updateNow);
+    }
+
+    if (productsList.length != 0)
     return (
         <>
             <h1>Products list</h1>
@@ -35,7 +46,7 @@ function Products() {
                     </tr>
                 </thead>
                 <tbody>
-                    {JSON.parse(localStorage.getItem('Products List')).map((product) => (
+                    {productsList.map((product) => (
                         <Product
                             key={product.id}
                             id={product.id}
@@ -47,10 +58,21 @@ function Products() {
                             active={product.active}
                             quantity={product.quantity}
                             price={product.price}
+                            UpdateNow={UpdateNow}
                         />
                     ))}
                 </tbody>
             </table>
+        </>
+    )
+    else 
+    return(
+        <>
+            <h1>Products list</h1>
+            <h3>Products list is empty</h3>
+            <Link to="/products/create">
+                <button>Create new product</button>
+            </Link>
         </>
     );
 }

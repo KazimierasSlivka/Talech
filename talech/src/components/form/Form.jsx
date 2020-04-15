@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -6,10 +6,6 @@ function Form(props) {
     const { handleSubmit, register } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
     const history = useHistory();
     const productsList = JSON.parse(localStorage.getItem('Products List'));
-
-    useEffect(() => {
-        console.log(FindItemIndexById());
-      }, []);
 
     function OnSave(inputFieldsValues) {
         if (props.formAction === "create")
@@ -20,13 +16,20 @@ function Form(props) {
     }
 
     function SaveOnCreate(inputFieldsValues) {
-        inputFieldsValues.id = productsList.length;
+        inputFieldsValues.id = props.GenerateUniqueId();
         productsList.push(inputFieldsValues);
         localStorage.setItem('Products List', JSON.stringify(productsList));
     }
 
     function SaveOnEdit(inputFieldsValues) {
-        console.log();
+        let i = FindItemIndexById()
+        productsList[i].name = inputFieldsValues.name;
+        productsList[i].ean = inputFieldsValues.ean;
+        productsList[i].type = inputFieldsValues.type;
+        productsList[i].weight = inputFieldsValues.weight;
+        productsList[i].color = inputFieldsValues.color;
+        productsList[i].active = inputFieldsValues.active;
+        localStorage.setItem('Products List', JSON.stringify(productsList));
     }
 
     function FindItemIndexById() {
