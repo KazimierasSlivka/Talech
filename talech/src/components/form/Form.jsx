@@ -34,6 +34,7 @@ function Form(props) {
         console.log(quantityData);
         inputFieldsValues.quantityData = quantityData;
         inputFieldsValues.priceData = priceData;
+        inputFieldsValues.active = true;
         productsList.push(inputFieldsValues);
         localStorage.setItem('Products List', JSON.stringify(productsList));
     }

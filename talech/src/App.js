@@ -233,12 +233,10 @@ function App() {
 
   useEffect(() => {
     FillDatabase();
-    console.log(JSON.parse(localStorage.getItem('Products List')));
   }, []);
 
   function FillDatabase() {
     localStorage.setItem('Products List', JSON.stringify(productsList));
-    console.log(JSON.parse(localStorage.getItem('Products List')));
   }
 
   function GenerateUniqueId() {
