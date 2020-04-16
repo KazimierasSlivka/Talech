@@ -9,3 +9,17 @@ tr{
 tr:hover{
     background-color:#efefef;
 }
+
+.tr-disabled{
+    background-color: whitesmoke;
+    color: #dedede;
+    button{
+        cursor: default;
+        background-color: #dedede;
+        color: grey;
+    }
+    button:hover{
+        background-color: #dedede;
+        color: grey;
+    }
+}

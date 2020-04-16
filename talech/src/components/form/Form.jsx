@@ -12,15 +12,32 @@ function Form(props) {
     function OnSave(inputFieldsValues) {
         if (props.formAction === "create")
             SaveOnCreate(inputFieldsValues);
-        else 
+        else
             SaveOnEdit(inputFieldsValues);
         history.push('/products');
     }
 
     function SaveOnCreate(inputFieldsValues) {
         inputFieldsValues.id = props.GenerateUniqueId();
+        let quantityData = [];
+        let priceData = [];
+        for (let i = 0; i < 5; i++) {
+            quantityData[i] = {
+                "time": Date.now(),
+                "amount": 0
+            };
+            priceData[i] = {
+                "time": Date.now(),
+                "price": 0
+            };
+        }
+        console.log(quantityData);
+        inputFieldsValues.quantityData = quantityData;
+        inputFieldsValues.priceData = priceData;
+        inputFieldsValues.active = true;
         productsList.push(inputFieldsValues);
         localStorage.setItem('Products List', JSON.stringify(productsList));
+        history.push('/products');
     }
 
     function SaveOnEdit(inputFieldsValues) {
@@ -35,7 +52,7 @@ function Form(props) {
 
     return (
         <>
-            <form 
+            <form
                 className="form-component form-group"
                 onSubmit={handleSubmit(OnSave)}
             >
@@ -67,7 +84,7 @@ function Form(props) {
                     <p className="text-danger text-center">{errors.ean && errors.ean.message}</p>
                 </div>
                 <div className="form-group">
-                    <label>Type</label> 
+                    <label>Type</label>
                     <input
                         class="form-control"
                         defaultValue={props.formAction === "edit" ? props.product.type : null}
@@ -84,7 +101,7 @@ function Form(props) {
                     <input
                         class="form-control"
                         defaultValue={props.formAction === "edit" ? props.product.weight : null}
-                        name="weight"
+                        name="number"
                         ref={register({
                             required: 'Weight field can not be empty'
                         })}

@@ -29,7 +29,7 @@ function Products() {
                     </button>
                 </Link>
                 <table 
-                    cellspacing="0"
+                    cellSpacing="0"
                 >
                     <colgroup>
                         <col className="name-collumn" />

@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Product.scss';
 
 function Product(props) {
     const [isProductDisabled, setIsProductDisabled] = useState(props.active);
+    const [tableRowStylesClass, setTableRowStylesClass] = useState("");
+
+    useEffect(() => {
+        TableRowStylesClass();
+     }, [isProductDisabled])
 
     function DeleteProductByIdFromList() {
         let productsList = JSON.parse(localStorage.getItem('Products List'));
@@ -14,11 +19,27 @@ function Product(props) {
         props.UpdateNow();
     }
 
+    function ChangeActiveStatusById() {
+        let productsList = JSON.parse(localStorage.getItem('Products List'));
+        let changeIndex = productsList.findIndex(item => item.id === props.id);
+        productsList[changeIndex].active = !isProductDisabled;
+        localStorage.setItem('Products List', JSON.stringify(productsList));
+    }
+
+    function TableRowStylesClass() {
+        if (props.quantity === 0 && isProductDisabled === false)
+            setTableRowStylesClass("quantity-empty tr-disabled")
+        else if (props.quantity !== 0 && isProductDisabled === false)
+            setTableRowStylesClass("tr-disabled")
+        else if (props.quantity === 0 && isProductDisabled === true)
+            setTableRowStylesClass("quantity-empty")
+        else
+            setTableRowStylesClass("")
+    }
+
     return (
         <>
-            <tr
-                className={props.quantity === 0 ? "quantity-empty" : null}
-            >
+            <tr className={tableRowStylesClass}>
                 <td className="text-left">{props.name}</td>
                 <td className="text-right">{props.ean}</td>
                 <td className="text-right">{props.type}</td>
@@ -28,7 +49,10 @@ function Product(props) {
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
-                        onChange={() => { setIsProductDisabled(!isProductDisabled) }}
+                        onChange={() => {
+                            setIsProductDisabled(!isProductDisabled);
+                            ChangeActiveStatusById();
+                        }}
                     />
                 </td>
                 <td className="text-right">{props.quantity}</td>
