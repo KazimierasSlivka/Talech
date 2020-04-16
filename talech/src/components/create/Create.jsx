@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 
 import Form from '../form/Form';
 

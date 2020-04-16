@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './Product.scss';
+
 function Product(props) {
+    const [isProductDisabled, setIsProductDisabled] = useState(props.active);
 
     function DeleteProductByIdFromList() {
         let productsList = JSON.parse(localStorage.getItem('Products List'));
@@ -13,32 +16,43 @@ function Product(props) {
 
     return (
         <>
-            <tr>
-                <td>{props.name}</td>
-                <td>{props.ean}</td>
-                <td>{props.type}</td>
-                <td>{props.weight}</td>
-                <td>{props.color}</td>
-                <td>
+            <tr
+                className={props.quantity === 0 ? "quantity-empty" : null}
+            >
+                <td className="text-left">{props.name}</td>
+                <td className="text-right">{props.ean}</td>
+                <td className="text-right">{props.type}</td>
+                <td className="text-right">{props.weight}</td>
+                <td className="text-right">{props.color}</td>
+                <td className="text-center">
                     <input
                         type="checkbox"
-                        checked={props.active}
+                        defaultChecked={props.active}
+                        onChange={() => { setIsProductDisabled(!isProductDisabled) }}
                     />
                 </td>
-                <td>{props.quantity}</td>
-                <td>{props.price}</td>
-                <td>
+                <td className="text-right">{props.quantity}</td>
+                <td className="text-right">{props.price}</td>
+                <td className="text-center">
                     <Link to={"/products/" + props.id}>
-                        <button>
+                        <button
+                            className="talech-button maintenance-view"
+                            disabled={!isProductDisabled}
+                        >
                             View
                         </button>
                     </Link>
                     <Link to={"/products/" + props.id + "/edit"}>
-                        <button>
+                        <button
+                            className="talech-button maintenance-edit"
+                            disabled={!isProductDisabled}
+                        >
                             Edit
                         </button>
                     </Link>
                     <button
+                        className="talech-button maintenance-delete"
+                        disabled={!isProductDisabled}
                         onClick={DeleteProductByIdFromList}
                     >
                         Delete

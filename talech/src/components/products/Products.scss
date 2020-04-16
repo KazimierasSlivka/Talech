@@ -1,0 +1,17 @@
+table {
+    margin-top: 40px;
+    width: 100%;
+    thead {
+        th {
+            font-size: 1.1rem;
+        }
+    }
+    tbody {
+        tr:hover{
+            background-color:#efefef;
+        }
+        button {
+            cursor: pointer;
+        }
+    }
+}

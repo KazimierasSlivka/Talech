@@ -10,64 +10,230 @@ function App() {
     [
       {
         "id": GenerateUniqueId(),
-        "name": "Item0",
+        "name": "Apple (Hard coded)",
         "ean": "1234567890",
-        "type": "Type0",
-        "weight": "Weight0",
-        "color": "Color0",
+        "type": "Fruit",
+        "weight": 0.13,
+        "color": "Red",
         "active": false,
-        "quantity": 0,
-        "price": 1
+        "quantityData":
+          [
+            {
+              "time": 1586947746810,
+              "amount": 156
+            },
+            {
+              "time": 1586944346810,
+              "amount": 653
+            },
+            {
+              "time": 1586924346810,
+              "amount": 788
+            },
+            {
+              "time": 1585924346810,
+              "amount": 1200
+            },
+            {
+              "time": 1584924346810,
+              "amount": 1514
+            }
+          ],
+        "priceData":
+          [
+            {
+              "time": 1586950000000,
+              "price": 1.42
+            },
+            {
+              "time": 1586918079000,
+              "price": 1.48
+            },
+            {
+              "time": 1586818079000,
+              "price": 1.32
+            },
+            {
+              "time": 1586518079000,
+              "price": 1.22
+            },
+            {
+              "time": 1586118079000,
+              "price": 1.01
+            }
+          ]
       },
       {
         "id": GenerateUniqueId(),
-        "name": "Item1",
+        "name": "Orange (Hard Coded)",
         "ean": "1234567890",
-        "type": "Type1",
-        "weight": "Weight1",
-        "color": "Color1",
-        "active": false,
-        "quantity": 1,
-        "price": 2
-      },
-      {
-        "id": GenerateUniqueId(),
-        "name": "Item2",
-        "ean": "1234567890",
-        "type": "Type2",
-        "weight": "Weight2",
-        "color": "Color2",
+        "type": "fruit",
+        "weight": "0.17",
+        "color": "Orange",
         "active": true,
-        "quantity": 2,
-        "price": 3
+        "quantityData":
+          [
+            {
+              "time": 1586947746810,
+              "amount": 333
+            },
+            {
+              "time": 1586944346810,
+              "amount": 267
+            },
+            {
+              "time": 1586924346810,
+              "amount": 87
+            },
+            {
+              "time": 1585924346810,
+              "amount": 445
+            },
+            {
+              "time": 1584924346810,
+              "amount": 318
+            }
+          ],
+        "priceData":
+          [
+            {
+              "time": 1586950000000,
+              "price": 1.99
+            },
+            {
+              "time": 1586918079000,
+              "price": 1.86
+            },
+            {
+              "time": 1586818079000,
+              "price": 1.90
+            },
+            {
+              "time": 1586518079000,
+              "price": 1.7
+            },
+            {
+              "time": 1586118079000,
+              "price": .99
+            }
+          ]
       },
       {
         "id": GenerateUniqueId(),
-        "name": "Item3",
+        "name": "Potato (Hard coded)",
         "ean": "1234567890",
-        "type": "Type3",
-        "weight": "Weight3",
-        "color": "Color3",
-        "active": false,
-        "quantity": 3,
-        "price": 4
-      },
-      {
-        "id": GenerateUniqueId(),
-        "name": "Item4",
-        "ean": "1234567890",
-        "type": "Type4",
-        "weight": "Weight4",
-        "color": "Color4",
+        "type": "Vegetable",
+        "weight": "0.09",
+        "color": "Brown",
         "active": true,
-        "quantity": 4,
-        "price": 5
+        "quantityData":
+          [
+            {
+              "time": 1586947746810,
+              "amount": 1888
+            },
+            {
+              "time": 1586944346810,
+              "amount": 1987
+            },
+            {
+              "time": 1586924346810,
+              "amount": 2022
+            },
+            {
+              "time": 1585924346810,
+              "amount": 2567
+            },
+            {
+              "time": 1584924346810,
+              "amount": 3000
+            }
+          ],
+        "priceData":
+          [
+            {
+              "time": 1586950000000,
+              "price": .49
+            },
+            {
+              "time": 1586918079000,
+              "price": .55
+            },
+            {
+              "time": 1586818079000,
+              "price": .76
+            },
+            {
+              "time": 1586518079000,
+              "price": .89
+            },
+            {
+              "time": 1586118079000,
+              "price": .99
+            }
+          ]
+      },
+      {
+        "id": GenerateUniqueId(),
+        "name": "Carrots (Hard coded)",
+        "ean": "1234567890",
+        "type": "Vegetable",
+        "weight": "0.07",
+        "color": "Orange",
+        "active": true,
+        "quantityData":
+          [
+            {
+              "time": 1586947746810,
+              "amount": 0
+            },
+            {
+              "time": 1586944346810,
+              "amount": 6
+            },
+            {
+              "time": 1586924346810,
+              "amount": 23
+            },
+            {
+              "time": 1585924346810,
+              "amount": 45
+            },
+            {
+              "time": 1584924346810,
+              "amount": 98
+            }
+          ],
+        "priceData":
+          [
+            {
+              "time": 1586950000000,
+              "price": .30
+            },
+            {
+              "time": 1586918079000,
+              "price": .29
+            },
+            {
+              "time": 1586818079000,
+              "price": .5
+            },
+            {
+              "time": 1586518079000,
+              "price": .6
+            },
+            {
+              "time": 1586118079000,
+              "price": .7
+            }
+          ]
       }
     ]
 
 
   useEffect(() => {
     FillDatabase();
+    console.log(JSON.parse(localStorage.getItem('Products List')));
   }, []);
 
   function FillDatabase() {
