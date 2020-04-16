@@ -5,6 +5,8 @@ import ProductDetails from '../product details/ProductDetails';
 import PriceHistory from '../price history/PriceHistory';
 import QuantityHistory from '../quantity history/QuantityHistory';
 
+import './Preview.scss';
+
 function Preview() {
     const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(true);
     const [isPriceHistoryOpen, setIsPriceHistoryOpen] = useState(false);
@@ -81,36 +83,53 @@ function Preview() {
     }
 
     return (
-        <>
+        <div className="preview-component">
             <h1>Preview</h1>
             <Link to="/products">
-                <button>
+                <button className="talech-button maintenance-edit">
                     Back to products list
                 </button>
             </Link>
-            <div>
-                <button onClick={ShowProductDetails}>Product details</button>
-                <button onClick={ShowPriceHistory}>Price history</button>
-                <button onClick={ShowQuantityHistory}>Quantity history</button>
+            <div className="preview-padding">
+                <div>
+                    <button 
+                        className="talech-button maintenance-view tab-button"
+                        onClick={ShowProductDetails}
+                    >
+                        Product details
+                    </button>
+                    <button
+                        className="talech-button maintenance-view tab-button" 
+                        onClick={ShowPriceHistory}
+                    >
+                        Price history
+                    </button>
+                    <button
+                        className="talech-button maintenance-view tab-button" 
+                        onClick={ShowQuantityHistory}
+                    >
+                        Quantity history
+                    </button>
+                </div>
+                {isProductDetailsOpen &&
+                    <ProductDetails
+                        price={product.priceData[0].price}
+                        quantity={product.quantityData[0].amount}
+                        SaveById={SaveById}
+                    />
+                }
+                {isPriceHistoryOpen &&
+                    <PriceHistory
+                        priceHistoryData={product.priceData}
+                    />
+                }
+                {isQuantityHistoryOpen &&
+                    <QuantityHistory
+                        quantityHistoryData={product.quantityData}
+                    />
+                }
             </div>
-            {isProductDetailsOpen &&
-                <ProductDetails
-                    price={product.priceData[0].price}
-                    quantity={product.quantityData[0].amount}
-                    SaveById={SaveById}
-                />
-            }
-            {isPriceHistoryOpen &&
-                <PriceHistory
-                    priceHistoryData={product.priceData}
-                />
-            }
-            {isQuantityHistoryOpen &&
-                <QuantityHistory
-                    quantityHistoryData={product.quantityData}
-                />
-            }
-        </>
+        </div>
     );
 }
 

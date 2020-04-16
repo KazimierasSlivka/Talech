@@ -19,21 +19,21 @@ function Product(props) {
             <tr
                 className={props.quantity === 0 ? "quantity-empty" : null}
             >
-                <td>{props.name}</td>
-                <td>{props.ean}</td>
-                <td>{props.type}</td>
-                <td>{props.weight}</td>
-                <td>{props.color}</td>
-                <td>
+                <td className="text-left">{props.name}</td>
+                <td className="text-right">{props.ean}</td>
+                <td className="text-right">{props.type}</td>
+                <td className="text-right">{props.weight}</td>
+                <td className="text-right">{props.color}</td>
+                <td className="text-center">
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
                         onChange={() => { setIsProductDisabled(!isProductDisabled) }}
                     />
                 </td>
-                <td>{props.quantity}</td>
-                <td>{props.price}</td>
-                <td>
+                <td className="text-right">{props.quantity}</td>
+                <td className="text-right">{props.price}</td>
+                <td className="text-center">
                     <Link to={"/products/" + props.id}>
                         <button
                             className="talech-button maintenance-view"

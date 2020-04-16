@@ -45,14 +45,14 @@ function Products() {
                     <thead>
                         <tr>
                             <th className="text-left">Name</th>
-                            <th className="text-center">EAN</th>
-                            <th className="text-center">Type</th>
-                            <th className="text-center">Weight</th>
-                            <th className="text-center">Color</th>
-                            <th className="text-center">Active</th>
-                            <th className="text-center">Quantity</th>
-                            <th className="text-center">Price</th>
-                            <th></th>
+                            <th className="text-right">EAN</th>
+                            <th className="text-right">Type</th>
+                            <th className="text-right">Weight</th>
+                            <th className="text-right">Color</th>
+                            <th className="text-right">Active</th>
+                            <th className="text-right">Quantity</th>
+                            <th className="text-right">Price</th>
+                            <th className="text-right"></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,8 +1,5 @@
 table {
     margin-top: 40px;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-left: 0;
     width: 100%;
     thead {
         th {
@@ -10,8 +7,8 @@ table {
         }
     }
     tbody {
-        tr:hover {
-            background-color: yellowgreen;
+        tr:hover{
+            background-color:#efefef;
         }
         button {
             cursor: pointer;

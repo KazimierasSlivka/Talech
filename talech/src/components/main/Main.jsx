@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import NotFound from '../not found/NotFound';
 import Products from '../products/Products';
 import Create from '../create/Create';
@@ -11,7 +13,7 @@ import './Main.scss'
 
 function Main() {
     return (
-        <main>
+        <main className="container">
             <Switch>
                 <Route exact path="/">
                     <Redirect to="/products" />
