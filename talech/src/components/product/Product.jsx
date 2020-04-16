@@ -39,9 +39,7 @@ function Product(props) {
 
     return (
         <>
-            <tr
-                className={tableRowStylesClass}
-            >
+            <tr className={tableRowStylesClass}>
                 <td className="text-left">{props.name}</td>
                 <td className="text-right">{props.ean}</td>
                 <td className="text-right">{props.type}</td>

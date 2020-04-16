@@ -37,6 +37,7 @@ function Form(props) {
         inputFieldsValues.active = true;
         productsList.push(inputFieldsValues);
         localStorage.setItem('Products List', JSON.stringify(productsList));
+        history.push('/products');
     }
 
     function SaveOnEdit(inputFieldsValues) {
