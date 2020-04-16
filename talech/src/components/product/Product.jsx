@@ -14,6 +14,13 @@ function Product(props) {
         props.UpdateNow();
     }
 
+    function ChangeActiveStatusById(){
+        let productsList = JSON.parse(localStorage.getItem('Products List'));
+        let changeIndex = productsList.findIndex(item => item.id === props.id);
+        productsList[changeIndex].active = !isProductDisabled;
+        localStorage.setItem('Products List', JSON.stringify(productsList));
+    }
+
     return (
         <>
             <tr
@@ -28,7 +35,10 @@ function Product(props) {
                     <input
                         type="checkbox"
                         defaultChecked={props.active}
-                        onChange={() => { setIsProductDisabled(!isProductDisabled) }}
+                        onChange={() => { 
+                            setIsProductDisabled(!isProductDisabled); 
+                            ChangeActiveStatusById();
+                        }}
                     />
                 </td>
                 <td className="text-right">{props.quantity}</td>
