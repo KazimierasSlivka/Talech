@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import ProductDetails from '../product details/ProductDetails';
 import PriceHistory from '../price history/PriceHistory';
@@ -11,7 +12,19 @@ function Preview() {
     const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(true);
     const [isPriceHistoryOpen, setIsPriceHistoryOpen] = useState(false);
     const [isQuantityHistoryOpen, setIsQuantityHistoryOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const product = FindItemById();
+
+    const modalStyles = {
+        content : {
+          top                   : '50%',
+          left                  : '50%',
+          right                 : 'auto',
+          bottom                : 'auto',
+          marginRight           : '-50%',
+          transform             : 'translate(-50%, -50%)'
+        }
+      };
 
     function GetIdByUrl() {
         let urlParameters = window.location.pathname.split("/");
@@ -32,6 +45,7 @@ function Preview() {
         productsList[i].priceData = RewritePrices(oldPricesList, parseFloat(inputFieldsValues.price));
         productsList[i].quantityData = RewriteQuantities(oldQuantitiesList, parseFloat(inputFieldsValues.quantity));
         localStorage.setItem('Products List', JSON.stringify(productsList));
+        setModalIsOpen(true);
     }
 
     function RewritePrices(oldPricesList, newPrice) {
@@ -129,6 +143,17 @@ function Preview() {
                     />
                 }
             </div>
+
+
+            <Modal
+                isOpen={modalIsOpen}
+                // onAfterOpen={afterOpenModal}
+                onRequestClose={() => {setModalIsOpen(false)}}
+                style={modalStyles}
+                //closeTimeoutMS={100}
+            >
+                <p className="text-success">Successfully saved!</p>
+            </Modal>
         </div>
     );
 }

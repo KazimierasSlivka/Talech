@@ -68,7 +68,7 @@ function App() {
         "name": "Orange (Hard Coded)",
         "ean": "1234567890",
         "type": "fruit",
-        "weight": "0.17",
+        "weight": 0.17,
         "color": "Orange",
         "active": true,
         "quantityData":
@@ -123,7 +123,7 @@ function App() {
         "name": "Potato (Hard coded)",
         "ean": "1234567890",
         "type": "Vegetable",
-        "weight": "0.09",
+        "weight": 0.09,
         "color": "Brown",
         "active": true,
         "quantityData":
@@ -178,7 +178,7 @@ function App() {
         "name": "Carrots (Hard coded)",
         "ean": "1234567890",
         "type": "Vegetable",
-        "weight": "0.07",
+        "weight": .07,
         "color": "Orange",
         "active": true,
         "quantityData":
