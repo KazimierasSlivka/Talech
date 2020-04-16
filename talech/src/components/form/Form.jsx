@@ -101,11 +101,12 @@ function Form(props) {
                     <input
                         class="form-control"
                         defaultValue={props.formAction === "edit" ? props.product.weight : null}
-                        name="number"
+                        name="weight"
                         ref={register({
                             required: 'Weight field can not be empty'
                         })}
-                        type="text"
+                        step="0.01"
+                        type="number"
                     />
                     <p className="text-danger text-center">{errors.weight && errors.weight.message}</p>
                 </div>
